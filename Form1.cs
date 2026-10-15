@@ -50,6 +50,7 @@ namespace JeutieControl
     private ToolStripMenuItem helpToolStripMenuItem;
     private ToolStripMenuItem openWorldserverConfigToolStripMenuItem;
     private ToolStripMenuItem openAuthserverConfigToolStripMenuItem;
+	private ToolStripMenuItem openCoreFolderToolStripMenuItem;
     private RichTextBox log;
     private TextBox WoWPath; 
     private ToolStripMenuItem currentOpacitySetting;
@@ -107,6 +108,7 @@ namespace JeutieControl
       this.fileToolStripMenuItem = new ToolStripMenuItem();
       this.openWorldserverConfigToolStripMenuItem = new ToolStripMenuItem();
       this.openAuthserverConfigToolStripMenuItem = new ToolStripMenuItem();
+	  this.openCoreFolderToolStripMenuItem = new ToolStripMenuItem();
       this.exitToolStripMenuItem = new ToolStripMenuItem();
       this.optionsToolStripMenuItem = new ToolStripMenuItem();
       this.KeepOnTop = new ToolStripMenuItem();
@@ -169,18 +171,22 @@ namespace JeutieControl
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
 
-      this.fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { (ToolStripItem) this.openWorldserverConfigToolStripMenuItem, (ToolStripItem) this.openAuthserverConfigToolStripMenuItem, (ToolStripItem) this.exitToolStripMenuItem });
+      this.fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { (ToolStripItem) this.openWorldserverConfigToolStripMenuItem, (ToolStripItem) this.openAuthserverConfigToolStripMenuItem, (ToolStripItem) this.openCoreFolderToolStripMenuItem, (ToolStripItem) this.exitToolStripMenuItem });
       this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
       this.fileToolStripMenuItem.Size = new Size(37, 20);
       this.fileToolStripMenuItem.Text = "Файл";
       this.openWorldserverConfigToolStripMenuItem.Name = "openWorldserverConfigToolStripMenuItem";
       this.openWorldserverConfigToolStripMenuItem.Size = new Size(208, 22);
-      this.openWorldserverConfigToolStripMenuItem.Text = "Open Worldserver Config";
+      this.openWorldserverConfigToolStripMenuItem.Text = "Открыть конфигурацию Worldserver";
       this.openWorldserverConfigToolStripMenuItem.Click += new EventHandler(this.openWorldserverConfigToolStripMenuItem_Click);
       this.openAuthserverConfigToolStripMenuItem.Name = "openAuthserverConfigToolStripMenuItem";
       this.openAuthserverConfigToolStripMenuItem.Size = new Size(208, 22);
-      this.openAuthserverConfigToolStripMenuItem.Text = "Open Authserver Config";
+      this.openAuthserverConfigToolStripMenuItem.Text = "Открыть конфигурацию Authserver";
       this.openAuthserverConfigToolStripMenuItem.Click += new EventHandler(this.openAuthserverConfigToolStripMenuItem_Click);
+	  this.openCoreFolderToolStripMenuItem.Name = "openCoreFolderToolStripMenuItem";
+	  this.openCoreFolderToolStripMenuItem.Size = new Size(208, 22);
+	  this.openCoreFolderToolStripMenuItem.Text = "Открыть папку Core";
+	  this.openCoreFolderToolStripMenuItem.Click += new EventHandler(this.openCoreFolderToolStripMenuItem_Click);
       this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
       this.exitToolStripMenuItem.Size = new Size(208, 22);
       this.exitToolStripMenuItem.Text = "Выход";
@@ -710,8 +716,30 @@ namespace JeutieControl
       this.Opacity = opacity; this.currentOpacitySetting.Checked = false; this.currentOpacitySetting = (ToolStripMenuItem)menuSelection; this.currentOpacitySetting.Checked = true;
     }
 
-    private void openWorldserverConfigToolStripMenuItem_Click(object sender, EventArgs e) { if (this.isServerPathCorrect) Process.Start("notepad.exe", this.ServerPath.Text + @"\worldserver.conf"); }
-    private void openAuthserverConfigToolStripMenuItem_Click(object sender, EventArgs e) { if (this.isServerPathCorrect) Process.Start("notepad.exe", this.ServerPath.Text + @"\authserver.conf"); }
+	private void openWorldserverConfigToolStripMenuItem_Click(object sender, EventArgs e) 
+	{ 
+		// Добавлен подкаталог \config\ к пути
+		if (this.isServerPathCorrect) 
+        Process.Start("notepad.exe", this.ServerPath.Text + @"\configs\worldserver.conf"); 
+	}
+	private void openAuthserverConfigToolStripMenuItem_Click(object sender, EventArgs e) 
+	{ 
+		// Добавлен подкаталог \config\ к пути
+		if (this.isServerPathCorrect) 
+			Process.Start("notepad.exe", this.ServerPath.Text + @"\configs\authserver.conf"); 
+	}
+	// Новый метод для открытия проводника в папке Core
+	private void openCoreFolderToolStripMenuItem_Click(object sender, EventArgs e) 
+	{ 
+		if (this.isServerPathCorrect && Directory.Exists(this.ServerPath.Text)) 
+		{
+			Process.Start("explorer.exe", this.ServerPath.Text); 
+		}
+		else 
+		{
+			this.Log("Ошибка! Путь к ядру сервера не задан или не существует.");
+		}
+	}
 
     private void Log(string text)
     {
