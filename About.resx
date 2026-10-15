@@ -121,13 +121,15 @@
     <value>Изначально приложение было создано дизайнером и разработчиком Джорди Терри Брашоу (Jordy Terry Brashaw) (http://jordythery.be/) для использования с Jeutie's Blizzlike Repack.
 
 В дальнейшем его обновил Crafted (https://github.com/CraftedRO)
-А потом и ваш дружелюбный сосед, ReKsSam.</value>
+
+А потом эти исходники нашел и ваш дружелюбный сосед, ReKsSam.
+Исходник: https://github.com/ReKsSam/AzerothCore-Control-Panel </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADgAAAA8CAYAAAAzF3kIAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAYR0lEQVRoQ8Va
+        vwAADr8BOAVTJAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAYR0lEQVRoQ8Va
         B1hU19aNQaXXAQERiV0UUJqAVMUO9hbFEjWK3URiNyp2NGoUG2JJzFMEYu8VFewaReMztqgx6LNFiUGC
         hKx/7YODA5kkmOT9z+9bznDuuffudXZb5955C8A/gl9//dVA3/j/GnoH3xBCzJywJ6yJcoS+ef8T6B18
         Qxjm5eX53rt378OcnJxh9KQfx4TwX/VoOV7DmrCU7yWOvTH0Dr4JaIjxL7/80jojI+PI+vXr79++fXs3
