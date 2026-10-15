@@ -258,11 +258,11 @@ namespace JeutieControl
       this.ServerPath.Text = "Путь еще не задан.";
       this.startWorld.Location = new Point(59, 32);
       this.startWorld.Size = new Size(241, 40);
-      this.startWorld.Text = "Запуск Worldserver.";
+      this.startWorld.Text = "Запуск Worldserver";
       this.startWorld.Click += new EventHandler(this.startWorld_Click);
       this.startAuth.Location = new Point(58, 78);
       this.startAuth.Size = new Size(242, 40);
-      this.startAuth.Text = "Запуск Authserver.";
+      this.startAuth.Text = "Запуск Authserver";
       this.startAuth.Click += new EventHandler(this.startAuth_Click);
       this.stopWorld.Location = new Point(306, 32);
       this.stopWorld.Size = new Size(73, 40);
@@ -286,11 +286,11 @@ namespace JeutieControl
       this.WoWPathButton.Click += new EventHandler(this.WoWPathButton_Click);
       this.startMySQL.Location = new Point(58, 152);
       this.startMySQL.Size = new Size(242, 40);
-      this.startMySQL.Text = "Запуск MySQL.";
+      this.startMySQL.Text = "Запуск MySQL";
       this.startMySQL.Click += new EventHandler(this.startMySQL_Click);
       this.startWoW.Location = new Point(58, 198);
       this.startWoW.Size = new Size(242, 40);
-      this.startWoW.Text = "Запустить WoW.";
+      this.startWoW.Text = "World of Warcraft";
       this.startWoW.Click += new EventHandler(this.startWoW_Click);
       this.stopMySQL.Location = new Point(306, 152);
       this.stopMySQL.Size = new Size(73, 40);
@@ -583,7 +583,7 @@ namespace JeutieControl
         if (!this.isMysqlPathCorrect) { this.Log("Ошибка! Нет возможности запустить MySQL сервер, некорректный путь."); return; }
         else if (this.IsProcessRunning("mysqld")) { this.Log("Ошибка! Сервер MySQL уже запущен."); return; }
         this.mySQL.Start();
-        this.Log("Запуск MySQL server внутри вкладки...");
+        this.Log("Запуск сервера MySQL...");
         int attempts = 0;
         while (this.mySQL.MainWindowHandle == IntPtr.Zero && attempts < 50)
         {
@@ -610,7 +610,7 @@ namespace JeutieControl
         else if (this.IsProcessRunning("authserver")) { this.Log("Error! Auth server is already started."); return; }
         else if (!this.IsProcessRunning("mysqld")) { this.Log("Error! Please start MySQL server first."); return; }
         this.authServer.Start();
-        this.Log("Запуск Auth server внутри вкладки...");
+        this.Log("Запуск Auth Server...");
         int attempts = 0;
         while (this.authServer.MainWindowHandle == IntPtr.Zero && attempts < 50)
         {
@@ -637,7 +637,7 @@ namespace JeutieControl
         else if (this.IsProcessRunning("worldserver")) { this.Log("Error! World server is already started."); return; }
         else if (!this.IsProcessRunning("mysqld")) { this.Log("Error! Please start MySQL server first."); return; }
         this.worldServer.Start();
-        this.Log("Запуск World server внутри вкладки...");
+        this.Log("Запуск World Server...");
         int attempts = 0;
         while (this.worldServer.MainWindowHandle == IntPtr.Zero && attempts < 50)
         {
